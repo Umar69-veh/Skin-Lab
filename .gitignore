@@ -32,8 +32,11 @@ yarn-error.log*
 .vercel
 
 # typescript
-*.tsbuildinfo
 next-env.d.ts
 .env
-*.js
-*.ts
+add_admin.ts
+add_missing_users.ts
+query_db.ts
+test-*.js
+test_*.js
+*.tsbuildinfo
