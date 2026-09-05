@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">skin-lab-app</string>
+    <string name="title_activity_main">skin-lab-app</string>
+    <string name="package_name">com.skinlab.pos</string>
+    <string name="custom_url_scheme">com.skinlab.pos</string>
+</resources>
