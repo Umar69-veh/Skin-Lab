@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 import { requireRole } from "@/lib/auth";
 import dayjs from "dayjs";
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export async function GET() {
