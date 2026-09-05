@@ -186,7 +186,7 @@ export default function StaffPage() {
   if (loading) return <div className="p-8 text-center text-gray-500">Loading...</div>;
 
   return (
-    <div className="max-w-6xl mx-auto w-full">
+    <div className="max-w-6xl mx-auto w-full min-w-0 p-4 sm:p-0">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Staff Directory</h1>
@@ -200,9 +200,9 @@ export default function StaffPage() {
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden w-full min-w-0">
+        <div className="overflow-x-auto w-full">
+          <table className="min-w-full divide-y divide-gray-200 min-w-[600px]">
             <thead className="bg-gray-50">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
@@ -240,7 +240,7 @@ export default function StaffPage() {
       {/* Employee Modal */}
       {isEmployeeModalOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh] mx-auto">
             <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
               <h2 className="text-lg font-semibold text-gray-900">{editingEmployee ? "Edit Employee" : "Add Employee"}</h2>
               <button onClick={() => setIsEmployeeModalOpen(false)} className="text-gray-400 hover:text-gray-600 transition-colors">

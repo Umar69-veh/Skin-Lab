@@ -72,7 +72,7 @@ export default function SuppliersPage() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6 w-full min-w-0">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">Suppliers</h2>
         <button
@@ -87,9 +87,10 @@ export default function SuppliersPage() {
       {loading ? (
         <div className="flex justify-center p-8 text-gray-500">Loading...</div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden w-full min-w-0">
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-full divide-y divide-gray-200 min-w-[600px]">
+              <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
@@ -122,13 +123,14 @@ export default function SuppliersPage() {
               )}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden mx-auto">
             <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
               <h3 className="text-lg font-bold text-gray-900">{selectedSupplier ? "Edit Supplier" : "Add Supplier"}</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-500">×</button>

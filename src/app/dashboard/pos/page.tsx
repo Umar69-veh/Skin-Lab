@@ -270,10 +270,10 @@ export default function POSPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col lg:flex-row gap-6">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col lg:flex-row gap-6 w-full min-w-0 p-4 sm:p-0">
       
       {/* LEFT PANEL */}
-      <div className="flex-1 flex flex-col gap-6 overflow-hidden">
+      <div className="flex-1 flex flex-col gap-6 overflow-hidden w-full min-w-0">
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 shrink-0">
           <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center"><User className="w-5 h-5 mr-2" /> Patient Selection</h2>
           
@@ -403,14 +403,14 @@ export default function POSPage() {
             )}
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 border border-gray-100 rounded-lg bg-gray-50/50">
+          <div className="flex-1 overflow-x-auto pr-2 border border-gray-100 rounded-lg bg-gray-50/50 w-full min-w-0">
             {cart.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-gray-400">
+              <div className="h-full flex flex-col items-center justify-center text-gray-400 p-8">
                 <ShoppingCart className="w-12 h-12 mb-3 opacity-20" />
                 <p>No items in cart.</p>
               </div>
             ) : (
-              <table className="w-full text-left border-collapse">
+              <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead className="bg-white sticky top-0 shadow-sm border-b border-gray-200">
                   <tr>
                     <th className="p-3 font-semibold text-sm text-gray-600">Item</th>
@@ -544,8 +544,8 @@ export default function POSPage() {
 
       {/* NEW PATIENT MODAL */}
       {isPatientModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden mx-auto">
             <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
               <h3 className="font-bold text-gray-900">Quick Add Patient</h3>
               <button onClick={() => setIsPatientModalOpen(false)} className="text-gray-400 hover:text-gray-600"><Trash2 className="w-5 h-5 hidden" /> &times;</button>

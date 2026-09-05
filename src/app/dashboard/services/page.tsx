@@ -157,9 +157,9 @@ export default function ServicesPage() {
               </select>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm w-full min-w-0 overflow-hidden">
+              <div className="overflow-x-auto w-full">
+                <table className="w-full text-left border-collapse min-w-[600px]">
                   <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
                     <tr>
                       <th className="py-4 px-6 font-semibold">SKU / Name</th>
@@ -203,13 +203,13 @@ export default function ServicesPage() {
 
         {activeTab === "deals" && (
           <div className="space-y-4">
-            <div className="flex justify-end mb-6">
+            <div className="flex justify-end mb-6 w-full min-w-0">
               <button type="button" onClick={() => { setEditingDealId(null); dealForm.reset({ name: "", price: 0, items: [{ product_id: "", sessions: 1 }] }); setIsDealModalOpen(true); }} className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm font-medium flex items-center shadow-sm">
                 <Plus className="w-4 h-4 mr-2" /> Create Bundle / Deal
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full min-w-0">
               {deals.map(d => (
                 <div key={d.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                   <div className="p-5 border-b border-gray-100 flex justify-between items-start bg-indigo-50/30">
@@ -260,7 +260,7 @@ export default function ServicesPage() {
       {/* Category Modal */}
       {isCategoryModalOpen && (
         <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden mx-auto">
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-lg font-semibold">New Category</h2>
               <button onClick={() => setIsCategoryModalOpen(false)} className="text-gray-400"><X className="w-5 h-5" /></button>
@@ -282,12 +282,13 @@ export default function ServicesPage() {
       {/* Product Modal */}
       {isProductModalOpen && (
         <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
-            <div className="flex items-center justify-between p-5 border-b bg-gray-50/50">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden mx-auto max-h-[90vh] flex flex-col">
+            <div className="flex items-center justify-between p-5 border-b bg-gray-50/50 shrink-0">
               <h2 className="text-lg font-semibold">{editingProductId ? 'Edit Service' : 'New Service'}</h2>
               <button onClick={() => setIsProductModalOpen(false)} className="text-gray-400"><X className="w-5 h-5" /></button>
             </div>
-            <form onSubmit={productForm.handleSubmit(onProductSubmit)} className="p-6 space-y-4">
+            <div className="overflow-y-auto p-6">
+              <form id="productForm" onSubmit={productForm.handleSubmit(onProductSubmit)} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name <span className="text-red-500">*</span></label>
                 <input {...productForm.register("name")} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500" />
@@ -308,7 +309,7 @@ export default function ServicesPage() {
                   {productForm.formState.errors.selling_price && <p className="mt-1 text-xs text-red-500">{productForm.formState.errors.selling_price.message as string}</p>}
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Cost Price ($)</label>
                   <input type="number" step="0.01" {...productForm.register("cost_price")} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500" />
@@ -318,11 +319,12 @@ export default function ServicesPage() {
                   <input type="number" {...productForm.register("stock_quantity")} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 </div>
               </div>
-              <div className="pt-4 flex justify-end space-x-2 border-t mt-6">
-                <button type="button" onClick={() => setIsProductModalOpen(false)} className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg">Cancel</button>
-                <button type="submit" disabled={productForm.formState.isSubmitting} className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg">{productForm.formState.isSubmitting ? 'Saving...' : 'Save Service'}</button>
-              </div>
-            </form>
+              </form>
+            </div>
+            <div className="p-5 border-t bg-gray-50 flex justify-end space-x-3 shrink-0">
+              <button type="button" onClick={() => setIsProductModalOpen(false)} className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</button>
+              <button type="submit" form="productForm" disabled={productForm.formState.isSubmitting} className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 disabled:opacity-70">{productForm.formState.isSubmitting ? 'Saving...' : 'Save Service'}</button>
+            </div>
           </div>
         </div>
       )}
@@ -330,14 +332,14 @@ export default function ServicesPage() {
       {/* Deal Modal */}
       {isDealModalOpen && (
         <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col mx-auto">
             <div className="flex items-center justify-between p-5 border-b bg-gray-50/50 shrink-0">
               <h2 className="text-lg font-semibold">{editingDealId ? 'Edit Package' : 'New Package / Deal'}</h2>
               <button onClick={() => setIsDealModalOpen(false)} className="text-gray-400"><X className="w-5 h-5" /></button>
             </div>
             <div className="overflow-auto p-6">
               <form id="dealForm" onSubmit={dealForm.handleSubmit(onDealSubmit)} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Bundle Name <span className="text-red-500">*</span></label>
                     <input {...dealForm.register("name")} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g. Laser Hair Removal - 6 Sessions" />

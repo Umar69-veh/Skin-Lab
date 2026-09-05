@@ -135,9 +135,9 @@ export default function PatientsPage() {
         )}
       </header>
 
-      <div className="p-8 flex-1 overflow-auto">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="relative w-80">
+      <div className="p-4 sm:p-8 flex-1 overflow-auto w-full min-w-0">
+        <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="relative w-full sm:w-80">
             <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               value={globalFilter ?? ""}
@@ -148,8 +148,8 @@ export default function PatientsPage() {
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="overflow-x-auto">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm w-full min-w-0 overflow-hidden">
+          <div className="overflow-x-auto w-full">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
               {table.getHeaderGroups().map(headerGroup => (
@@ -193,8 +193,8 @@ export default function PatientsPage() {
       {/* Add Patient Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-gray-50/50">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200 mx-auto">
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-gray-100 bg-gray-50/50">
               <h2 className="text-lg font-semibold text-gray-800">Register New Patient</h2>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-600 transition-colors rounded-full p-1 hover:bg-gray-200">
                 <X className="w-5 h-5" />
@@ -206,7 +206,7 @@ export default function PatientsPage() {
                 <input {...register("name")} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm" placeholder="e.g. Jane Doe" />
                 {errors.name && <p className="mt-1.5 text-xs text-red-500 font-medium">{errors.name.message}</p>}
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number</label>
                   <input {...register("phone")} className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm" placeholder="+1 (555) 000-0000" />

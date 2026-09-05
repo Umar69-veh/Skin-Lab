@@ -57,7 +57,7 @@ export default function DashboardPage() {
   const { todayRevenue, patientsTreatedToday, activeDues, revenueTrend, topTreatments, recentTransactions } = data;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6 w-full min-w-0">
       
       {/* Header */}
       <div className="flex justify-between items-end mb-6">
@@ -107,7 +107,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Revenue Trend Chart */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 min-w-0 w-full overflow-hidden">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-bold text-gray-900">Revenue Trend (30 Days)</h3>
             <TrendingUp className="w-5 h-5 text-gray-400" />
@@ -135,7 +135,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Top Treatments */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col min-w-0 w-full overflow-hidden">
           <h3 className="text-lg font-bold text-gray-900 mb-6">Top Treatments (30 Days)</h3>
           <div className="flex-1 overflow-y-auto">
             {topTreatments && topTreatments.length > 0 ? (
@@ -166,12 +166,12 @@ export default function DashboardPage() {
       </div>
 
       {/* Bottom Row: Recent Transactions */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden w-full min-w-0">
         <div className="p-6 border-b border-gray-100">
           <h3 className="text-lg font-bold text-gray-900">Recent Transactions</h3>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
+        <div className="overflow-x-auto w-full">
+          <table className="w-full text-left min-w-[600px]">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>

@@ -98,7 +98,7 @@ export default function PurchasesPage() {
 
   if (isCreating) {
     return (
-      <div className="p-6">
+      <div className="p-4 sm:p-6 w-full min-w-0">
         <div className="flex items-center mb-6">
           <button onClick={() => setIsCreating(false)} className="mr-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200">
             <ArrowLeft className="w-5 h-5 text-gray-700" />
@@ -134,7 +134,7 @@ export default function PurchasesPage() {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+          <div className="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm w-full min-w-0">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Line Items</h3>
               <button type="button" onClick={() => append({ product_id: "", quantity: 1, unit_cost: 0, total_cost: 0 })} className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center">
@@ -142,7 +142,7 @@ export default function PurchasesPage() {
               </button>
             </div>
             
-            <div className="space-y-3">
+            <div className="space-y-3 w-full min-w-0">
               {fields.map((field, index) => (
                 <div key={field.id} className="flex flex-col sm:flex-row gap-3 items-start sm:items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
                   <div className="flex-1 w-full">
@@ -204,7 +204,7 @@ export default function PurchasesPage() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6 w-full min-w-0">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">Purchase Orders</h2>
         <button
@@ -219,9 +219,10 @@ export default function PurchasesPage() {
       {loading ? (
         <div className="flex justify-center p-8 text-gray-500">Loading...</div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden w-full min-w-0">
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-full divide-y divide-gray-200 min-w-[600px]">
+              <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Invoice #</th>
@@ -251,8 +252,9 @@ export default function PurchasesPage() {
                   <td colSpan={5} className="px-6 py-8 text-center text-gray-500">No purchases found.</td>
                 </tr>
               )}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

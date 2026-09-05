@@ -150,7 +150,7 @@ export default function ReportsPage() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-50/50 -m-8 p-8 overflow-y-auto">
+    <div className="flex flex-col h-full bg-gray-50/50 -m-4 p-4 sm:-m-8 sm:p-8 overflow-y-auto w-full min-w-0">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-black text-gray-900 tracking-tight">Reports & Analytics</h1>
@@ -182,9 +182,9 @@ export default function ReportsPage() {
         )}
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[500px]">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[500px] w-full min-w-0">
         {/* Tabs */}
-        <div className="flex border-b border-gray-100 bg-gray-50/50 px-4 pt-4">
+        <div className="flex border-b border-gray-100 bg-gray-50/50 px-4 pt-4 overflow-x-auto whitespace-nowrap shrink-0">
           <button 
             className={`px-6 py-3 font-semibold text-sm border-b-2 rounded-t-lg flex items-center transition-colors ${activeTab === 'sales_register' ? 'border-indigo-600 text-indigo-700 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-100/50'}`}
             onClick={() => setActiveTab('sales_register')}
@@ -225,8 +225,8 @@ export default function ReportsPage() {
             <>
               {/* TAB 1: Sales Register */}
               {activeTab === 'sales_register' && (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
+                <div className="overflow-x-auto w-full">
+                  <table className="w-full text-left border-collapse min-w-[600px]">
                     <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
                       <tr>
                         <th className="py-4 px-6 font-semibold">Date</th>
@@ -265,8 +265,8 @@ export default function ReportsPage() {
 
               {/* TAB 2: Service Performance */}
               {activeTab === 'service_performance' && (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
+                <div className="overflow-x-auto w-full">
+                  <table className="w-full text-left border-collapse min-w-[600px]">
                     <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
                       <tr>
                         <th className="py-4 px-6 font-semibold">Service / Product Name</th>
@@ -388,9 +388,10 @@ export default function ReportsPage() {
                       </div>
 
                       <h3 className="font-bold text-gray-900 mb-4">Invoice History</h3>
-                      <div className="border border-gray-200 rounded-xl overflow-hidden bg-white">
-                        <table className="w-full text-left border-collapse">
-                          <thead className="bg-gray-50 border-b border-gray-200">
+                      <div className="border border-gray-200 rounded-xl overflow-hidden bg-white w-full min-w-0">
+                        <div className="overflow-x-auto w-full">
+                          <table className="w-full text-left border-collapse min-w-[600px]">
+                            <thead className="bg-gray-50 border-b border-gray-200">
                             <tr>
                               <th className="p-4 font-semibold text-sm text-gray-600">Date</th>
                               <th className="p-4 font-semibold text-sm text-gray-600">Invoice</th>
@@ -419,6 +420,7 @@ export default function ReportsPage() {
                             )}
                           </tbody>
                         </table>
+                        </div>
                       </div>
                     </div>
                   )}

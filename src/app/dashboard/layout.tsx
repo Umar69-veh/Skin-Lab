@@ -20,8 +20,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <Sidebar userEmail={email} userRole={role} />
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto flex flex-col min-h-0 relative">
-        <div className="p-4 md:p-6 lg:p-8 flex-1 flex flex-col">
+      <main className="flex-1 overflow-auto flex flex-col min-h-0 min-w-0 relative w-full">
+        <div className="p-4 md:p-6 lg:p-8 flex-1 flex flex-col min-w-0 w-full">
           {children}
         </div>
       </main>

@@ -106,7 +106,7 @@ export default function SalesHistoryPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full min-w-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Sales & Returns</h1>
@@ -157,9 +157,9 @@ export default function SalesHistoryPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden w-full min-w-0">
+            <div className="overflow-x-auto w-full">
+              <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
                     <th className="p-4 font-semibold text-sm text-gray-600">Date</th>
@@ -203,9 +203,9 @@ export default function SalesHistoryPage() {
       )}
 
       {activeTab === "returns" && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden w-full min-w-0">
+          <div className="overflow-x-auto w-full">
+            <table className="w-full text-left border-collapse min-w-[600px]">
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="p-4 font-semibold text-sm text-gray-600">Return Date</th>
@@ -263,7 +263,7 @@ export default function SalesHistoryPage() {
       {/* PAYMENT MODAL */}
       {isPaymentModalOpen && selectedSale && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-sm p-6">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-sm p-6 mx-auto">
             <h3 className="font-bold text-gray-900 text-lg mb-4">Process Payment</h3>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">Amount to collect</label>

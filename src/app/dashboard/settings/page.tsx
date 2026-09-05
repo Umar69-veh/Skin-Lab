@@ -129,15 +129,15 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-50/50 -m-8 p-8 overflow-y-auto">
+    <div className="flex flex-col h-full bg-gray-50/50 -m-4 p-4 sm:-m-8 sm:p-8 overflow-y-auto w-full min-w-0">
       <div className="mb-8">
         <h1 className="text-3xl font-black text-gray-900 tracking-tight">Settings</h1>
         <p className="text-gray-500 mt-1">Manage clinic profile and system users.</p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[500px]">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[500px] w-full min-w-0">
         {/* Tabs */}
-        <div className="flex border-b border-gray-100 bg-gray-50/50 px-4 pt-4">
+        <div className="flex border-b border-gray-100 bg-gray-50/50 px-4 pt-4 overflow-x-auto whitespace-nowrap shrink-0">
           <button
             className={`px-6 py-3 font-semibold text-sm border-b-2 rounded-t-lg flex items-center transition-colors ${activeTab === 'clinic' ? 'border-indigo-600 text-indigo-700 bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-100/50'}`}
             onClick={() => setActiveTab('clinic')}
@@ -272,9 +272,10 @@ export default function SettingsPage() {
                     </button>
                   </div>
 
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-                    <table className="w-full text-left border-collapse">
-                      <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden w-full min-w-0">
+                    <div className="overflow-x-auto w-full">
+                      <table className="w-full text-left border-collapse min-w-[600px]">
+                        <thead className="bg-gray-50/80 border-b border-gray-200 text-gray-600 text-xs uppercase tracking-wider">
                         <tr>
                           <th className="py-4 px-6 font-semibold">Email</th>
                           <th className="py-4 px-6 font-semibold">Role</th>
@@ -314,6 +315,7 @@ export default function SettingsPage() {
                         ))}
                       </tbody>
                     </table>
+                    </div>
                   </div>
                 </div>
               )}
@@ -325,7 +327,7 @@ export default function SettingsPage() {
       {/* ──── ADD USER MODAL ──── */}
       {isAddUserOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden mx-auto">
             <div className="px-6 py-4 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
               <h3 className="font-bold text-gray-900">Add New User</h3>
               <button onClick={() => { setIsAddUserOpen(false); setAddUserError(""); }} className="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
