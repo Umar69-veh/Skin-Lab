@@ -4,6 +4,8 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { FlaskConical, Users, ShoppingBag, BarChart3, ArrowRight, ShieldCheck } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const session = await getServerSession();
 
